@@ -1,0 +1,86 @@
+### Add Product
+POST http://localhost:4000/api/admin/product/create
+Content-Type: application/json
+
+{
+  "name": "Pad Thai 2",
+  "detail": "Shrimp",
+  "price": 40
+}
+
+### Admin - Create Table
+POST http://localhost:4000/api/admin/table/create
+Content-Type: application/json
+
+{
+  "seat": 4,
+  "status": "available"
+}
+
+### Admin - List Tables
+GET http://localhost:4000/api/admin/tables
+
+### Admin - Update Table Status
+PUT http://localhost:4000/api/admin/table/1/status
+Content-Type: application/json
+
+{
+  "status": "occupied"
+}
+
+
+### Checkin Table
+POST http://localhost:4000/api/checkin
+Content-Type: application/json
+
+{
+  "table_id": 1
+}
+
+### List Products
+GET http://localhost:4000/api/products
+
+### Create Order
+POST http://localhost:4000/api/order
+Content-Type: application/json
+
+{
+  "table_token": "64e90758-d8ac-4ae1-b5b2-23fc213cb49a",
+  "items": [
+    { "product_id": 1, "qty": 2 },
+     { "product_id": 2, "qty":1 }
+  ]
+}
+
+### Get Order History
+POST http://localhost:4000/api/history
+Content-Type: application/json
+
+{
+  "table_token": "64e90758-d8ac-4ae1-b5b2-23fc213cb49a"
+}
+
+### Request Checkout
+POST http://localhost:4000/api/checkout
+Content-Type: application/json
+
+{
+  "table_token": "64e90758-d8ac-4ae1-b5b2-23fc213cb49a"
+}
+
+### Admin - List Orders
+GET http://localhost:4000/api/admin/orders
+
+### Admin - Alerts
+GET http://localhost:4000/api/admin/alert
+
+### Admin - Update Order Status
+PUT http://localhost:4000/api/admin/orders/2?status=ready
+
+### Admin - Settle Bill (Mock Payment)
+POST http://localhost:4000/api/admin/checkout/settle
+Content-Type: application/json
+
+{
+  "table_session_id": 1
+}
